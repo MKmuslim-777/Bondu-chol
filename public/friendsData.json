@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah Chen",
+    "phone": "+1-555-0101",
+    "email": "sarah.chen@email.com",
+    "photoUrl": "https://example.com/photos/sarah.jpg",
+    "fatherName": "David Chen",
+    "age": 28,
+    "profession": "Software Engineer",
+    "specialSkills": ["Python programming", "Data analysis", "Piano", "Mandarin fluency"]
+  },
+  {
+    "id": 2,
+    "name": "Marcus Johnson",
+    "phone": "+1-555-0102",
+    "email": "marcus.j@email.com",
+    "photoUrl": "https://example.com/photos/marcus.jpg",
+    "fatherName": "Robert Johnson",
+    "age": 32,
+    "profession": "Graphic Designer",
+    "specialSkills": ["UI/UX design", "Digital illustration", "Photography", "Basketball"]
+  },
+  {
+    "id": 3,
+    "name": "Priya Sharma",
+    "phone": "+1-555-0103",
+    "email": "priya.sharma@email.com",
+    "photoUrl": "https://example.com/photos/priya.jpg",
+    "fatherName": "Rajesh Sharma",
+    "age": 26,
+    "profession": "Marketing Manager",
+    "specialSkills": ["Digital marketing", "Public speaking", "Hindi poetry", "Yoga instructor"]
+  },
+  {
+    "id": 4,
+    "name": "Alex Rodriguez",
+    "phone": "+1-555-0104",
+    "email": "alex.rod@email.com",
+    "photoUrl": "https://example.com/photos/alex.jpg",
+    "fatherName": "Carlos Rodriguez",
+    "age": 30,
+    "profession": "Chef",
+    "specialSkills": ["French cuisine", "Wine pairing", "Gardening", "Spanish fluency"]
+  },
+  {
+    "id": 5,
+    "name": "Emily Watson",
+    "phone": "+1-555-0105",
+    "email": "emily.watson@email.com",
+    "photoUrl": "https://example.com/photos/emily.jpg",
+    "fatherName": "James Watson",
+    "age": 29,
+    "profession": "Environmental Scientist",
+    "specialSkills": ["Environmental research", "Hiking", "Wildlife photography", "Scuba diving"]
+  },
+  {
+    "id": 6,
+    "name": "Kenji Tanaka",
+    "phone": "+1-555-0106",
+    "email": "kenji.t@email.com",
+    "photoUrl": "https://example.com/photos/kenji.jpg",
+    "fatherName": "Hiroshi Tanaka",
+    "age": 31,
+    "profession": "Architect",
+    "specialSkills": ["Sustainable design", "3D modeling", "Calligraphy", "Kendo"]
+  },
+  {
+    "id": 7,
+    "name": "Olivia Parker",
+    "phone": "+1-555-0107",
+    "email": "olivia.p@email.com",
+    "photoUrl": "https://example.com/photos/olivia.jpg",
+    "fatherName": "Michael Parker",
+    "age": 27,
+    "profession": "Music Teacher",
+    "specialSkills": ["Violin performance", "Music composition", "Songwriting", "Baking"]
+  },
+  {
+    "id": 8,
+    "name": "David Kim",
+    "phone": "+1-555-0108",
+    "email": "david.kim@email.com",
+    "photoUrl": "https://example.com/photos/david.jpg",
+    "fatherName": "Steven Kim",
+    "age": 33,
+    "profession": "Financial Analyst",
+    "specialSkills": ["Investment strategies", "Chess", "Korean cooking", "Mountain biking"]
+  },
+  {
+    "id": 9,
+    "name": "Lisa Thompson",
+    "phone": "+1-555-0109",
+    "email": "lisa.thompson@email.com",
+    "photoUrl": "https://example.com/photos/lisa.jpg",
+    "fatherName": "Richard Thompson",
+    "age": 25,
+    "profession": "Nurse",
+    "specialSkills": ["Emergency care", "CPR certified", "Painting", "Swimming"]
+  },
+  {
+    "id": 10,
+    "name": "Ahmed Hassan",
+    "phone": "+1-555-0110",
+    "email": "ahmed.hassan@email.com",
+    "photoUrl": "https://example.com/photos/ahmed.jpg",
+    "fatherName": "Omar Hassan",
+    "age": 34,
+    "profession": "Civil Engineer",
+    "specialSkills": ["Structural design", "Project management", "Arabic calligraphy", "Soccer"]
+  }
+]
