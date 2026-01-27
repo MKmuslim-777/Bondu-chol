@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "url": "https://i.ibb.co.com/GfCqqqzV/PXL-20260123-111923382-PORTRAIT-ORIGINAL.jpg",
+    "title": "সাজেক ভ্যালি ট্যুর",
+    "location": "রাঙামাটি",
+    "createdAt": "2026-01-20T10:30:00Z",
+    "description": "মেঘের রাজ্যে বন্ধুদের সাথে কাটানো এক দারুণ সকাল।"
+  },
+  {
+    "id": 2,
+    "url": "https://i.ibb.co.com/BVZH9Xfx/PXL-20260123-103330996-MP.jpg",
+    "title": "কক্সবাজারের সমুদ্র",
+    "location": "কক্সবাজার",
+    "createdAt": "2026-01-25T15:45:00Z",
+    "description": "সূর্যাস্তের সময় সমুদ্র সৈকতে আড্ডা।"
+  },
+  {
+    "id": 3,
+    "url": "https://i.ibb.co.com/20S87XPS/IMG-20260126-151513-737.jpg",
+    "title": "সিলেটের চা বাগান",
+    "location": "সিলেট",
+    "createdAt": "2025-12-10T08:00:00Z",
+    "description": "সবুজের মাঝে হারানো এক বিকেল।"
+  },
+  {
+    "id": 4,
+    "url": "https://i.ibb.co.com/hFc3QgpX/IMG-20260124-074914-411.jpg",
+    "title": "সুন্দরবন অভিযান",
+    "location": "খুলনা",
+    "createdAt": "2025-11-05T09:20:00Z",
+    "description": "গহীন অরণ্যে বন্ধুদের সাথে রোমাঞ্চ।"
+  }
+]
