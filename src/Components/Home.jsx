@@ -2,7 +2,7 @@ import React from "react";
 import Banner from "./Banner";
 import AllFriends from "./AllFriends";
 import { useLoaderData } from "react-router";
-import Gallery from "./Gallery";
+import Memories from "./Memories";
 
 const Home = () => {
   const friends = useLoaderData();
@@ -11,7 +11,7 @@ const Home = () => {
     <div>
       <section className="container ">
         <Banner></Banner>
-        <Gallery></Gallery>
+        <Memories></Memories>
         <AllFriends friends={friends}></AllFriends>
       </section>
     </div>

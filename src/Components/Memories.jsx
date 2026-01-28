@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import data from "../../public/gallery.json";
 
-const Gallery = () => {
+const Memories = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch("../../public/gallery.json")
+    fetch("http://localhost:3000/memories")
       .then((res) => res.json())
       .then((data) => setImages(data));
 
@@ -98,4 +97,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default Memories;
