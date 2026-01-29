@@ -1,18 +1,19 @@
 import React from "react";
 import Banner from "./Banner";
-import AllFriends from "./AllFriends";
 import { useLoaderData } from "react-router";
 import Memories from "./Memories";
+import TravelStats from "./TravelStats/TravelStats";
+import FriendsTestimonials from "./FriendsTestimonials/FriendsTestimonials";
 
 const Home = () => {
-  const friends = useLoaderData();
-  // console.log(friends);
   return (
     <div>
       <section className="">
         <Banner></Banner>
         <Memories></Memories>
-        <AllFriends friends={friends}></AllFriends>
+
+        <TravelStats></TravelStats>
+        <FriendsTestimonials></FriendsTestimonials>
       </section>
     </div>
   );

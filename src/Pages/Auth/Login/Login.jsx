@@ -1,14 +1,14 @@
-import React, { useState } from "react"; // useState যোগ করা হয়েছে
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // চোখের আইকন ইমপোর্ট
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Logo from "../../../Shared/Logo";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import useAuth from "../../../Hooks/useAuth";
 
 const Login = () => {
   const { user } = useAuth();
-  const [showPassword, setShowPassword] = useState(false); // পাসওয়ার্ড হাইড/শো স্টেট
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,

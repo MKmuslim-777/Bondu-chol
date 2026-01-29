@@ -1,19 +1,24 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useState, useEffect } from "react";
+import useAxios from "../Hooks/useAxios";
+import Loading from "../Shared/Loaders/Loading";
 
 const Memories = () => {
-  const [images, setImages] = useState([]);
+  const axios = useAxios();
 
-  useEffect(() => {
-    fetch("http://localhost:3000/memories")
-      .then((res) => res.json())
-      .then((data) => {
-        // ডেটা সর্ট করা যেন নতুনগুলো আগে আসে
-        const sorted = [...data].sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
-        );
-        setImages(sorted);
-      });
-  }, []);
+  const { isLoading, data: images } = useQuery({
+    queryKey: ["memories"],
+    queryFn: async () => {
+      const res = await axios.get("/memories");
+      return res.data;
+    },
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  // console.log(images);
 
   return (
     <section className="py-12 md:py-20 bg-white">
