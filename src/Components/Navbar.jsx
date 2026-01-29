@@ -14,83 +14,36 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary font-bold bg-base-200 lg:bg-transparent"
-              : "hover:text-primary"
-          }
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/event"
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary font-bold bg-base-200 lg:bg-transparent"
-              : "hover:text-primary"
-          }
-        >
-          Event
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/All-friends"
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary font-bold bg-base-200 lg:bg-transparent"
-              : "hover:text-primary"
-          }
-        >
-          All Friends
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/tour"
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary font-bold bg-base-200 lg:bg-transparent"
-              : "hover:text-primary"
-          }
-        >
-          Tour
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/gallery"
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary font-bold bg-base-200 lg:bg-transparent"
-              : "hover:text-primary"
-          }
-        >
-          Gallery
-        </NavLink>
-      </li>
+      {["Home", "Event", "All-friends", "Tour", "Gallery"].map((item) => (
+        <li key={item}>
+          <NavLink
+            to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+            className={({ isActive }) =>
+              `relative px-4 py-2 transition-all duration-300 ${
+                isActive
+                  ? "text-primary font-bold bg-primary/10 lg:bg-transparent lg:after:content-[''] lg:after:absolute lg:after:bottom-0 lg:after:left-4 lg:after:right-4 lg:after:h-1 lg:after:bg-primary lg:after:rounded-full"
+                  : "hover:text-primary opacity-70 hover:opacity-100"
+              }`
+            }
+          >
+            {item.replace("-", " ")}
+          </NavLink>
+        </li>
+      ))}
     </>
   );
 
   return (
-    /* ১. drawer-end সরিয়ে দেওয়া হয়েছে যাতে এটি বাম পাশ থেকে আসে */
     <div className="drawer z-[100]">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 
       <div className="drawer-content flex flex-col">
-        {/* Navbar */}
-        <div className="w-full bg-base-100/80 backdrop-blur-md border-b border-base-200 sticky top-0">
-          <div className="navbar container mx-auto px-4 md:px-8">
-            <div className="navbar-start gap-2">
-              {/* ২. মোবাইল মেনু টগল বাটন এখন সবার বামে */}
+        <div className="w-full bg-base-100/60 backdrop-blur-xl border-b border-base-200 sticky top-0 transition-all">
+          <div className="navbar container mx-auto px-4 md:px-8 h-20">
+            <div className="navbar-start gap-3">
               <label
                 htmlFor="my-drawer"
-                className="btn btn-ghost lg:hidden p-1"
+                className="btn btn-ghost lg:hidden btn-circle hover:bg-primary/10"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -102,37 +55,31 @@ const Navbar = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
+                    strokeWidth="1.5"
+                    d="M4 6h16M4 12h10M4 18h16"
                   />
                 </svg>
               </label>
-
-              <Link
-                to="/"
-                className="flex items-center gap-2 transform transition-transform hover:scale-105"
-              >
+              <Link to="/" className="hover:opacity-80 transition-opacity">
                 <Logo />
               </Link>
             </div>
 
-            {/* Desktop Menu */}
             <div className="navbar-center hidden lg:flex">
-              <ul className="menu menu-horizontal px-1 gap-2 font-medium">
+              <ul className="menu menu-horizontal p-0 gap-1 font-semibold text-[15px]">
                 {navLinks}
               </ul>
             </div>
 
-            {/* Right Section */}
-            <div className="navbar-end gap-2">
+            <div className="navbar-end gap-4">
               {user ? (
                 <div className="dropdown dropdown-end">
                   <div
                     tabIndex={0}
                     role="button"
-                    className="btn btn-ghost btn-circle avatar online"
+                    className="btn btn-ghost btn-circle avatar online ring-2 ring-primary/20 ring-offset-2"
                   >
-                    <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <div className="w-10 rounded-full">
                       <img
                         src={
                           user?.photoURL ||
@@ -144,25 +91,25 @@ const Navbar = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content mt-4 z-[1] p-3 shadow-2xl bg-base-100 rounded-2xl w-64 border border-base-200"
+                    className="menu menu-sm dropdown-content mt-4 z-[1] p-2 shadow-2xl bg-base-100/90 backdrop-blur-md rounded-2xl w-64 border border-base-200"
                   >
                     <div className="flex flex-col items-center p-4 border-b border-base-100 mb-2">
                       <span className="font-bold text-lg">
                         {user?.displayName}
                       </span>
-                      <span className="text-xs text-base-content/60 truncate w-full text-center">
+                      <span className="text-xs opacity-50 truncate w-full text-center">
                         {user?.email}
                       </span>
                     </div>
                     <li>
-                      <Link to="/dashboard" className="py-3">
+                      <Link to="/dashboard" className="py-3 rounded-xl">
                         Dashboard
                       </Link>
                     </li>
                     <li>
                       <button
                         onClick={handleSignOut}
-                        className="py-3 text-error font-bold"
+                        className="py-3 text-error font-bold rounded-xl hover:bg-error/10"
                       >
                         Sign Out
                       </button>
@@ -173,15 +120,15 @@ const Navbar = () => {
                 <div className="flex items-center gap-2">
                   <Link
                     to="/auth/login"
-                    className="btn btn-ghost btn-sm hidden sm:inline-flex"
+                    className="hidden sm:flex text-sm font-bold px-4 py-2 hover:text-primary transition-colors"
                   >
-                    Log In
+                    Login
                   </Link>
                   <Link
                     to="/auth/register"
-                    className="btn btn-primary btn-sm px-6"
+                    className="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-bold text-white transition-all duration-300 bg-primary rounded-full hover:bg-primary-focus group shadow-lg shadow-primary/30"
                   >
-                    Get Started
+                    <span className="relative">Join Now</span>
                   </Link>
                 </div>
               )}
@@ -190,16 +137,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Drawer Side (Mobile Sidebar) */}
+      {/* Drawer Side */}
       <div className="drawer-side">
-        <label
-          htmlFor="my-drawer"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
-        <ul className="menu p-4 w-72 min-h-full bg-base-100 text-base-content pt-6">
+        <label htmlFor="my-drawer" className="drawer-overlay"></label>
+        <div className="p-6 w-80 min-h-full bg-base-100/95 backdrop-blur-md text-base-content flex flex-col">
           {/* Drawer Header */}
-          <div className="flex justify-between items-center mb-8 px-2">
+          <div className="flex justify-between items-center mb-10">
             <Logo />
             <label
               htmlFor="my-drawer"
@@ -209,12 +152,12 @@ const Navbar = () => {
             </label>
           </div>
 
-          {/* User Info inside Drawer if logged in */}
-          {user && (
-            <div className="bg-base-200 rounded-xl p-4 mb-6">
-              <div className="flex items-center gap-3">
+          {/* User Info or Join Card */}
+          {user ? (
+            <div className="bg-gradient-to-br from-primary/10 to-transparent rounded-3xl p-5 mb-8 border border-primary/10">
+              <div className="flex items-center gap-4">
                 <img
-                  className="w-10 h-10 rounded-full"
+                  className="w-14 h-14 rounded-2xl shadow-lg"
                   src={
                     user?.photoURL ||
                     `https://ui-avatars.com/api/?name=${user?.displayName}`
@@ -222,54 +165,89 @@ const Navbar = () => {
                   alt=""
                 />
                 <div className="overflow-hidden">
-                  <p className="font-bold text-sm truncate">
+                  <p className="font-black text-base truncate">
                     {user?.displayName}
                   </p>
-                  <p className="text-xs opacity-60 truncate">{user?.email}</p>
+                  <p className="text-[10px] opacity-50 truncate uppercase tracking-tighter">
+                    Member
+                  </p>
                 </div>
               </div>
             </div>
-          )}
-
-          <div className="text-xs font-semibold text-base-content/40 px-4 mb-2 uppercase tracking-widest">
-            Menu
-          </div>
-          {navLinks}
-
-          {user && (
-            <>
-              <div className="divider opacity-50"></div>
-              <li>
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
-              <li>
-                <button
-                  onClick={handleSignOut}
-                  className="text-error font-medium"
+          ) : (
+            <div className="bg-black text-white rounded-3xl p-6 mb-8 shadow-2xl overflow-hidden relative group">
+              <div className="relative z-10">
+                <h3 className="text-xl font-black mb-2 leading-none">
+                  Explore
+                  <br />
+                  Our Circle.
+                </h3>
+                <p className="text-[10px] opacity-60 mb-4">
+                  গল্পগুলো শেয়ার করো আমাদের সাথে!
+                </p>
+                <Link
+                  to="/auth/register"
+                  onClick={() => document.getElementById("my-drawer").click()}
+                  className="bg-white text-black text-[11px] font-black px-4 py-2 rounded-full inline-block uppercase tracking-wider"
                 >
-                  Sign Out
-                </button>
-              </li>
-            </>
+                  Create Account
+                </Link>
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl transition-all group-hover:bg-primary/40"></div>
+            </div>
           )}
 
+          <div className="text-[10px] font-black text-base-content/30 px-2 mb-4 uppercase tracking-[3px]">
+            Navigation
+          </div>
+
+          <ul className="menu menu-md p-0 gap-1 flex-1">{navLinks}</ul>
+
+          {/* Social Style Auth at bottom for Guest */}
           {!user && (
-            <div className="mt-auto pb-6 grid grid-cols-1 gap-3 px-2">
+            <div className="pt-6 mt-6 border-t border-base-200">
               <Link
                 to="/auth/login"
-                className="btn btn-outline btn-primary btn-sm w-full"
+                onClick={() => document.getElementById("my-drawer").click()}
+                className="flex items-center justify-center gap-2 w-full py-4 text-sm font-black uppercase tracking-widest border-2 border-base-200 rounded-2xl hover:bg-base-200 transition-all"
               >
-                Log In
-              </Link>
-              <Link
-                to="/auth/register"
-                className="btn btn-primary btn-sm w-full"
-              >
-                Get Started
+                Login
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
               </Link>
             </div>
           )}
-        </ul>
+
+          {user && (
+            <div className="pt-6 mt-6 border-t border-base-200 flex flex-col gap-2">
+              <Link
+                to="/dashboard"
+                onClick={() => document.getElementById("my-drawer").click()}
+                className="btn btn-ghost justify-start rounded-xl"
+              >
+                Dashboard
+              </Link>
+              <button
+                onClick={handleSignOut}
+                className="btn btn-ghost justify-start text-error hover:bg-error/10 rounded-xl"
+              >
+                Sign Out
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

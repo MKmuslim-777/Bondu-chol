@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden">
+    <div className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 z-0"

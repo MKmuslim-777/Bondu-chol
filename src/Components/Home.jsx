@@ -9,7 +9,7 @@ const Home = () => {
   // console.log(friends);
   return (
     <div>
-      <section className="container ">
+      <section className="">
         <Banner></Banner>
         <Memories></Memories>
         <AllFriends friends={friends}></AllFriends>

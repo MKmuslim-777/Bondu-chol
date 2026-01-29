@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
   const {
@@ -44,14 +45,15 @@ const Register = () => {
           </div>
 
           <div className="mt-8 space-y-6">
-            <button
+            {/* <button
               type="button"
               className="w-full flex items-center justify-center gap-3 py-3 px-4 border border-gray-300 rounded-xl shadow-sm bg-white text-gray-700 font-bold hover:bg-gray-50 transition-all active:scale-95"
               onClick={() => console.log("Google Login Clicked")}
             >
               <FcGoogle className="text-2xl" />
               <span>গুগল দিয়ে সাইন-আপ করো</span>
-            </button>
+            </button> */}
+            <SocialLogin />
 
             <div className="relative flex items-center justify-center">
               <div className="flex-grow border-t border-gray-200"></div>
