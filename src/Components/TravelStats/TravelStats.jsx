@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FaMapMarkedAlt,
   FaCameraRetro,
@@ -35,7 +34,6 @@ const TravelStats = () => {
   ];
 
   return (
-    // bg-white (Light) এবং dark:bg-gray-950 (Dark)
     <div className="py-20 bg-white dark:bg-gray-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -56,11 +54,10 @@ const TravelStats = () => {
           {stats.map((stat) => (
             <div
               key={stat.id}
-              className="flex flex-col items-center p-8 bg-gray-50 dark:bg-gray-900/50 rounded-3xl border border-transparent hover:border-yellow-500/50 hover:bg-white dark:hover:bg-gray-800 hover:shadow-2xl hover:shadow-yellow-500/10 transition-all duration-300 group"
+              className="flex flex-col items-center p-8 bg-gray-50 dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-yellow-500/50 hover:bg-white dark:hover:bg-gray-800 hover:shadow-2xl hover:shadow-yellow-500/10 transition-all duration-300 group"
             >
-              {/* Icon container with background glow in dark mode */}
               <div className="mb-6 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 relative">
-                <div className="absolute inset-0 bg-yellow-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-yellow-500/30 dark:bg-yellow-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative">{stat.icon}</div>
               </div>
 
@@ -76,10 +73,9 @@ const TravelStats = () => {
         </div>
       </div>
 
-      {/* Decorative Divider */}
-      <div className="flex justify-center items-center mt-20 opacity-30">
+      <div className="flex justify-center items-center mt-20 opacity-40 dark:opacity-30">
         <div className="h-[1px] w-20 md:w-40 bg-gradient-to-r from-transparent to-gray-400 dark:to-gray-600"></div>
-        <div className="mx-6 text-[10px] md:text-xs text-gray-500 dark:text-white tracking-[0.3em] font-black uppercase whitespace-nowrap">
+        <div className="mx-6 text-[10px] md:text-xs text-gray-500 dark:text-gray-400 tracking-[0.3em] font-black uppercase whitespace-nowrap">
           আমাদের পথচলা চলবেই
         </div>
         <div className="h-[1px] w-20 md:w-40 bg-gradient-to-l from-transparent to-gray-400 dark:to-gray-600"></div>

@@ -1,4 +1,3 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { FaQuoteLeft } from "react-icons/fa";
@@ -75,7 +74,7 @@ const FriendsTestimonials = () => {
           {reviews.map((review) => (
             <SwiperSlide key={review.id}>
               <div className="max-w-3xl mx-auto py-6">
-                <div className="relative bg-white dark:bg-gray-800 p-8 md:p-12 rounded-[2rem] shadow-2xl dark:shadow-yellow-500/5 border border-gray-100 dark:border-gray-700 text-center transform transition-all">
+                <div className="relative bg-white dark:bg-gray-800 p-8 md:p-12 rounded-[2rem] shadow-2xl dark:shadow-yellow-500/10 border border-gray-100 dark:border-gray-700 text-center transform transition-all hover:scale-[1.02]">
                   {/* Floating Quote Icon */}
                   <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center shadow-lg z-10">
                     <FaQuoteLeft className="text-white text-xl" />
@@ -107,30 +106,41 @@ const FriendsTestimonials = () => {
         </Swiper>
       </div>
 
-      {/* Custom Styles */}
-      <style jsx global>{`
-        .swiper-button-next,
-        .swiper-button-prev {
-          color: #eab308 !important;
-          transform: scale(0.6);
-          background: rgba(255, 255, 255, 0.1);
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          backdrop-filter: blur(4px);
-        }
-        .swiper-pagination-bullet-active {
-          background: #eab308 !important;
-          width: 25px !important;
-          border-radius: 5px !important;
-        }
-        @media (max-width: 768px) {
+      <style jsx global>
+        {`
           .swiper-button-next,
           .swiper-button-prev {
-            display: none;
+            color: #eab308 !important;
+            transform: scale(0.6);
+            background: rgba(234, 179, 8, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(234, 179, 8, 0.2);
           }
-        }
-      `}</style>
+          .swiper-button-next:hover,
+          .swiper-button-prev:hover {
+            background: rgba(234, 179, 8, 0.2);
+          }
+          .swiper-pagination-bullet {
+            background: #9ca3af !important;
+            opacity: 0.5;
+          }
+          .swiper-pagination-bullet-active {
+            background: #eab308 !important;
+            width: 25px !important;
+            border-radius: 5px !important;
+            opacity: 1;
+          }
+          @media (max-width: 768px) {
+            .swiper-button-next,
+            .swiper-button-prev {
+              display: none;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

@@ -5,6 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="https://ln.run/SOoF4" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>বন্ধু চল</title>
+    <script>
+      // Load theme immediately to prevent flash
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
   </head>
   <body>
     <div id="root"></div>

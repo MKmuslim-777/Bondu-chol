@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState, useEffect } from "react";
 import useAxios from "../Hooks/useAxios";
 import Loading from "../Shared/Loaders/Loading";
 
@@ -18,14 +17,14 @@ const Memories = () => {
     return <Loading />;
   }
 
-  // console.log(images);
-
   return (
-    <section className="py-12 md:py-20 bg-white">
+    // bg-white ঠিক রেখে dark:bg-gray-950 (ডার্ক মোডের জন্য) যোগ করা হয়েছে
+    <section className="py-12 md:py-20 bg-white dark:bg-gray-950 transition-colors duration-300">
       <div className="container mx-auto px-3 lg:px-12">
+        
         {/* Header Section */}
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-black text-gray-900">
+          <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-gray-50">
             আমাদের{" "}
             <span className="text-yellow-500 relative inline-block">
               স্মৃতিমালা
@@ -43,17 +42,18 @@ const Memories = () => {
               </svg>
             </span>
           </h2>
-          <p className="mt-4 text-gray-500 text-sm md:text-base font-medium italic">
+          <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm md:text-base font-medium italic">
             "ফেলে আসা দিনগুলোর সোনালী মুহূর্ত"
           </p>
         </div>
 
         {/* Reels Style Image Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-5">
-          {images.map((item, index) => (
+          {images?.map((item, index) => (
             <div
               key={item.id || index}
-              className="relative aspect-[9/16] overflow-hidden rounded-2xl md:rounded-[2rem] group cursor-pointer border border-gray-100 shadow-md transition-all duration-500 hover:shadow-2xl"
+              // বর্ডার ডার্ক মোডে হালকা গ্রে করা হয়েছে
+              className="relative aspect-[9/16] overflow-hidden rounded-2xl md:rounded-[2rem] group cursor-pointer border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-500/20"
             >
               {/* Image */}
               <img
@@ -63,22 +63,22 @@ const Memories = () => {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+              {/* Gradient Overlay (এটি ডার্ক/লাইট উভয় মোডে ইমেজের ওপর টেক্সট পড়তে সাহায্য করবে) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
 
-              {/* Status Badge - রিসেন্টলি ব্যাজ */}
+              {/* Status Badge */}
               <div className="absolute top-3 left-3 md:top-4 md:left-4">
                 {index === 0 ? (
                   <span className="bg-red-600 text-white text-[9px] md:text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg border border-red-500">
                     <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
-                    সর্বশেষ আয়োজন
+                    সর্বশেষ আয়োজন
                   </span>
                 ) : index < 3 ? (
                   <span className="bg-yellow-500/90 backdrop-blur-sm text-black text-[9px] md:text-[10px] font-bold px-2.5 py-1 rounded-full">
                     রিসেন্টলি
                   </span>
                 ) : (
-                  <span className="bg-black/30 backdrop-blur-md text-white text-[9px] md:text-[10px] px-2.5 py-1 rounded-full border border-white/20 font-light">
+                  <span className="bg-black/40 backdrop-blur-md text-white text-[9px] md:text-[10px] px-2.5 py-1 rounded-full border border-white/20 font-light">
                     {item.location}
                   </span>
                 )}
@@ -90,8 +90,8 @@ const Memories = () => {
                   {item.title}
                 </h3>
 
-                <div className="flex items-center justify-between opacity-80">
-                  <span className="text-gray-300 text-[10px] md:text-xs">
+                <div className="flex items-center justify-between opacity-90">
+                  <span className="text-gray-200 text-[10px] md:text-xs">
                     {new Date(item.createdAt).toLocaleDateString("bn-BD", {
                       day: "numeric",
                       month: "long",
@@ -99,7 +99,6 @@ const Memories = () => {
                     })}
                   </span>
 
-                  {/* Location Icon for Desktop */}
                   <div className="hidden md:flex items-center gap-1 text-white text-[10px]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -108,18 +107,8 @@ const Memories = () => {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     {item.location}
                   </div>
@@ -131,10 +120,10 @@ const Memories = () => {
 
         {/* Bottom Message */}
         <div className="mt-16 text-center">
-          <p className="text-gray-400 text-xs md:text-sm flex items-center justify-center gap-2">
-            <span className="h-px w-8 bg-gray-200"></span>
+          <p className="text-gray-400 dark:text-gray-600 text-xs md:text-sm flex items-center justify-center gap-2">
+            <span className="h-px w-8 bg-gray-200 dark:bg-gray-800"></span>
             আমাদের পথচলা চলবেই...
-            <span className="h-px w-8 bg-gray-200"></span>
+            <span className="h-px w-8 bg-gray-200 dark:bg-gray-800"></span>
           </p>
         </div>
       </div>

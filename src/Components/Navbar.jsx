@@ -2,9 +2,14 @@ import React from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../Shared/Logo";
 import useAuth from "../Hooks/useAuth";
+import useRole from "../Hooks/useRole";
+import useTheme from "../Hooks/useTheme";
+import Loading from "../Shared/Loaders/Loading";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
+  const { roleLoading, role } = useRole();
+  const { theme, toggleTheme } = useTheme();
 
   const handleSignOut = () => {
     signOutUser()
@@ -60,9 +65,9 @@ const Navbar = () => {
                   />
                 </svg>
               </label>
-              <Link to="/" className="hover:opacity-80 transition-opacity">
+              <div className="hover:opacity-80 transition-opacity">
                 <Logo />
-              </Link>
+              </div>
             </div>
 
             <div className="navbar-center hidden lg:flex">
@@ -72,6 +77,45 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end gap-4">
+              {/* Theme Toggle Button */}
+              {/* <button
+                onClick={toggleTheme}
+                className="btn btn-ghost btn-circle hover:bg-primary/10 transition-all"
+                aria-label="Toggle theme"
+              >
+                {theme === "light" ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                )}
+              </button> */}
+
               {user ? (
                 <div className="dropdown dropdown-end">
                   <div
@@ -144,12 +188,51 @@ const Navbar = () => {
           {/* Drawer Header */}
           <div className="flex justify-between items-center mb-10">
             <Logo />
-            <label
-              htmlFor="my-drawer"
-              className="btn btn-sm btn-circle btn-ghost"
-            >
-              ✕
-            </label>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={toggleTheme}
+                className="btn btn-sm btn-circle btn-ghost hover:bg-primary/10"
+                aria-label="Toggle theme"
+              >
+                {theme === "light" ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                )}
+              </button>
+              <label
+                htmlFor="my-drawer"
+                className="btn btn-sm btn-circle btn-ghost"
+              >
+                ✕
+              </label>
+            </div>
           </div>
 
           {/* User Info or Join Card */}
@@ -169,7 +252,7 @@ const Navbar = () => {
                     {user?.displayName}
                   </p>
                   <p className="text-[10px] opacity-50 truncate uppercase tracking-tighter">
-                    Member
+                    {role}
                   </p>
                 </div>
               </div>

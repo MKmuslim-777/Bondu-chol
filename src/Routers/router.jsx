@@ -7,6 +7,10 @@ import Login from "../Pages/Auth/Login/Login";
 import AllFriends from "../Components/AllFriends";
 import Memories from "../Components/Memories";
 import Register from "../Pages/Auth/Register/Register";
+import NotFound from "../Pages/NotFound/NotFound";
+import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
+import AdminDashboardHome from "../Pages/Dashboard/AdminDashBoard/AdminDashboardHome/AdminDashboardHome";
+import Gallery from "../Pages/Galllery/Gallery";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +21,10 @@ const router = createBrowserRouter([
         path: "/",
         loader: () => fetch("../friendsData.json"),
         Component: Home,
+      },
+      {
+        path: "/gallery",
+        element: <Gallery></Gallery>,
       },
     ],
   },
@@ -33,6 +41,23 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        index: true,
+        element: <AdminDashboardHome></AdminDashboardHome>,
+      },
+      {
+        path: "all-friends",
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFound></NotFound>,
   },
 ]);
 
