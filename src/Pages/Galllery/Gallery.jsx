@@ -34,10 +34,7 @@ const Gallery = () => {
         {images.slice(0, 6).map((img, index) => (
           <div
             key={img._id || index}
-            className={`overflow-hidden rounded-2xl group relative shadow-md 
-              ${index === 0 ? "md:col-span-2 md:row-span-2" : ""} 
-              ${index === 3 ? "md:col-span-2" : ""}
-            `}
+            className={`overflow-hidden rounded-2xl group relative shadow-md`}
           >
             {/* Image */}
             <img

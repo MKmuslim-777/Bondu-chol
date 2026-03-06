@@ -11,6 +11,7 @@ import NotFound from "../Pages/NotFound/NotFound";
 import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import AdminDashboardHome from "../Pages/Dashboard/AdminDashBoard/AdminDashboardHome/AdminDashboardHome";
 import Gallery from "../Pages/Galllery/Gallery";
+import Friends from "../Pages/Friends/Friends";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
+      },
+      {
+        path: "/all-friends",
+        element: <Friends></Friends>,
       },
     ],
   },

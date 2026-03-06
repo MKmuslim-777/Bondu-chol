@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaHeart, FaExpandAlt } from "react-icons/fa";
 import { Link } from "react-router";
 
@@ -58,20 +58,21 @@ const HomeGallery = () => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-12">
+    <div className=" mx-auto md:px-60 px-4 py-12 bg-white dark:bg-neutral-950 transition-colors duration-300">
       {/* Header Section */}
       <div className="flex items-end justify-between mb-10 border-b border-gray-100 dark:border-gray-800 pb-6">
         <div>
-          <h2 className="text-4xl font-black text-black dark:text-white tracking-tight">
+          {/* Changed text-black to text-neutral-900 and added dark:text-white */}
+          <h2 className="text-4xl font-black text-neutral-900 dark:text-white tracking-tight">
             আলোকচিত্র <span className="text-rose-500">.</span>
           </h2>
-          <p className="text-gray-500 mt-2 font-medium">
+          <p className="text-gray-500 dark:text-gray-400 mt-2 font-medium">
             আমাদের ফ্রেমবন্দি মুহূর্তগুলো
           </p>
         </div>
         <Link
           to={"/gallery"}
-          className="hidden md:block text-sm font-bold bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+          className="hidden md:block text-sm font-bold bg-gray-100 dark:bg-gray-800 text-neutral-800 dark:text-gray-200 px-4 py-2 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
         >
           View All
         </Link>
@@ -86,25 +87,25 @@ const HomeGallery = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative group break-inside-avoid rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500"
+            className="relative group break-inside-avoid rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 bg-gray-50 dark:bg-gray-900"
           >
             {/* Image Container */}
-            <div className="relative overflow-hidden bg-gray-200 dark:bg-gray-800">
+            <div className="relative overflow-hidden">
               <img
                 src={memory.img}
                 alt="gallery"
                 className="w-full h-auto object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
               />
 
-              {/* Category Badge */}
+              {/* Category Badge - kept transparent blur for consistency */}
               <div className="absolute top-4 left-4 z-10">
-                <span className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] uppercase tracking-widest font-bold rounded-full">
+                <span className="px-3 py-1 bg-black/30 backdrop-blur-md border border-white/20 text-white text-[10px] uppercase tracking-widest font-bold rounded-full">
                   {memory.category}
                 </span>
               </div>
 
-              {/* Sophisticated Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <button
@@ -131,12 +132,6 @@ const HomeGallery = () => {
             </div>
           </motion.div>
         ))}
-        <Link
-          to={"/gallery"}
-          className="block md:hidden mx-auto text-center w-[150px] text-sm font-bold bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
-        >
-          View All
-        </Link>
       </div>
     </div>
   );
