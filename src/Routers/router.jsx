@@ -12,6 +12,8 @@ import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import AdminDashboardHome from "../Pages/Dashboard/AdminDashBoard/AdminDashboardHome/AdminDashboardHome";
 import Gallery from "../Pages/Galllery/Gallery";
 import Friends from "../Pages/Friends/Friends";
+import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
+import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +58,16 @@ const router = createBrowserRouter([
         element: <AdminDashboardHome></AdminDashboardHome>,
       },
       {
+        path: "my-profile",
+        element: <MyProfile></MyProfile>,
+      },
+      {
         path: "all-friends",
+        element: <Friends></Friends>,
+      },
+      {
+        path: "updateProfile",
+        element: <UpdateProfile></UpdateProfile>,
       },
     ],
   },

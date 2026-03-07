@@ -1,24 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios"; // অথবা আপনার পছন্দের fetch library
-import { FaFacebook, FaGithub, FaEnvelope } from "react-icons/fa";
-import Friend from "../../Components/Friend";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Shared/Loaders/Loading";
+import useAxios from "../../Hooks/useAxios";
+import FriendCard from "../../Components/FriendCard/FriendCard";
 
 const Friends = () => {
-  //   useEffect(() => {
-  //     // আপনার তৈরি করা API থেকে ডাটা ফেচ করুন
-  //     axios
-  //       .get("/users/bara")
-  //       .then((res) => {
-  //         setFriends(res.data);
-  //         setLoading(false);
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //         setLoading(false);
-  //       });
-  //   }, []);
+  const axios = useAxios();
 
   const {
     isLoading,
@@ -55,7 +42,7 @@ const Friends = () => {
       {/* Friends Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {friends.map((friend) => (
-          <Friend friend={friend} key={friend._id}></Friend>
+          <FriendCard friend={friend} key={friend._id}></FriendCard>
         ))}
       </div>
 

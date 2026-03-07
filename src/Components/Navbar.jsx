@@ -14,7 +14,6 @@ import { GoShieldCheck, GoSignOut } from "react-icons/go";
 import { toast } from "react-toastify";
 import useAuth from "../Hooks/useAuth";
 import useRole from "../Hooks/useRole";
-import useTheme from "../Hooks/useTheme";
 import Logo from "../Shared/Logo";
 import ThemeToggle from "../Shared/ThemeToggle/ThemeToggle";
 
@@ -39,7 +38,7 @@ const Navbar = () => {
 
   // Human readable nav link styles
   const navLinkStyles = ({ isActive }) =>
-    `relative flex items-center gap-2 px-4 py-2 text-[15px] font-semibold transition-all duration-300 rounded-full ${
+    `relative flex items-center gap-2 px-4 py-2 text-[15px] font-semibold transition-all duration-300 rounded-full text-black dark:text-white ${
       isActive
         ? "text-primary bg-primary/10 lg:bg-transparent lg:after:content-[''] lg:after:absolute lg:after:bottom-0 lg:after:left-4 lg:after:right-4 lg:after:h-1 lg:after:bg-primary lg:after:rounded-full"
         : "text-slate-600 dark:text-slate-300 hover:text-primary opacity-80 hover:opacity-100"
