@@ -178,4 +178,13 @@ app.prepare().then(async () => {
   httpServer.listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`);
   });
+
+  // Graceful shutdown
+  const shutdown = () => {
+    console.log("> Shutting down gracefully...");
+    httpServer.close(() => process.exit(0));
+    setTimeout(() => process.exit(1), 10000);
+  };
+  process.on("SIGTERM", shutdown);
+  process.on("SIGINT", shutdown);
 });
