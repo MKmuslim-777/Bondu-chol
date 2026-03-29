@@ -1,0 +1,45 @@
+{
+  "name": "bondu-chol-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS=--no-experimental-webstorage node server.js",
+    "dev:next": "cross-env NODE_OPTIONS=--no-experimental-webstorage next dev",
+    "build": "next build",
+    "start": "cross-env NODE_ENV=production NODE_OPTIONS=--no-experimental-webstorage node server.js",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emoji-mart/data": "^1.2.1",
+    "@emoji-mart/react": "^1.1.1",
+    "@tanstack/react-query": "^5.90.20",
+    "axios": "^1.13.4",
+    "emoji-mart": "^5.6.0",
+    "firebase": "^12.4.0",
+    "firebase-admin": "^13.6.0",
+    "framer-motion": "^12.29.2",
+    "lottie-react": "^2.4.1",
+    "mongodb": "^7.0.0",
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-fast-marquee": "^1.6.5",
+    "react-hook-form": "^7.71.1",
+    "react-icons": "^5.5.0",
+    "react-loading-indicators": "^1.0.1",
+    "react-toastify": "^11.0.5",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
+    "sonner": "^2.0.7",
+    "swiper": "^12.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "cross-env": "^10.1.0",
+    "daisyui": "^5.3.10",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3",
+    "postcss": "^8",
+    "tailwindcss": "^4"
+  }
+}
