@@ -33,7 +33,7 @@ export async function POST(request) {
     user.createdAt = new Date();
     const db = await getDB();
     const exists = await db.collection("users").findOne({ email: user.email });
-    if (exists) return NextResponse.json({ message: "user Exists" });
+    if (exists) return NextResponse.json({ message: "User already exists" }, { status: 409 });
     const result = await db.collection("users").insertOne(user);
     return NextResponse.json(result);
   } catch {

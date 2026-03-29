@@ -76,7 +76,12 @@ app.prepare().then(async () => {
   });
 
   const io = new Server(httpServer, {
-    cors: { origin: "*", methods: ["GET", "POST"] },
+    cors: {
+      origin: process.env.NODE_ENV === "production"
+        ? [process.env.NEXT_PUBLIC_APP_URL || "*"]
+        : "*",
+      methods: ["GET", "POST"],
+    },
     path: "/api/socket",
   });
 

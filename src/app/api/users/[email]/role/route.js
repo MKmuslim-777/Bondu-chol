@@ -17,8 +17,12 @@ export async function PATCH(request, { params }) {
   if (adminCheck.error) return NextResponse.json({ message: adminCheck.error }, { status: adminCheck.status });
 
   try {
+    const VALID_ROLES = ["user", "bara", "moderator", "admin"];
     const { email } = await params;
     const { role } = await request.json();
+    if (!role || !VALID_ROLES.includes(role)) {
+      return NextResponse.json({ error: "Invalid role" }, { status: 400 });
+    }
     const db = await getDB();
     await db.collection("users").updateOne({ email }, { $set: { role } });
     return NextResponse.json({ success: true });

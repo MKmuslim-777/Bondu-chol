@@ -1,5 +1,6 @@
 import { getDB } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
+import { verifyFBToken, verifyAdmin } from "@/lib/authMiddleware";
 
 const DEFAULTS = { name: "Bara Chat Room", bgImage: "", bgColor: "" };
 
@@ -14,6 +15,11 @@ export async function GET() {
 }
 
 export async function PATCH(req) {
+  const decoded = await verifyFBToken(req);
+  if (decoded.error) return NextResponse.json({ message: decoded.error }, { status: decoded.status });
+  const adminCheck = await verifyAdmin(decoded.email);
+  if (adminCheck.error) return NextResponse.json({ message: adminCheck.error }, { status: adminCheck.status });
+
   try {
     const body = await req.json();
     const update = {};
